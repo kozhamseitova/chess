@@ -28,7 +28,7 @@ public class LogIn extends HttpServlet {
                 Cookie ck=new Cookie("email",email);
                 response.addCookie(ck);
 
-                request.getRequestDispatcher("jsp/main.jsp").forward(request, response);
+                request.getRequestDispatcher("jsp/chat.jsp").forward(request, response);
             }else{
                 String mess = "Incorrect password, try again!!!";
                 request.setAttribute("mess", mess);
