@@ -1,4 +1,5 @@
 <%@include file="../lib(header&footer)/mainHead.jsp"%>
+
 <div style="width: 100%; margin-bottom: -3%">
     <h5 style="color: white; text-align: center">${mess1}</h5>
     <div id='turn'>It's Whites Turn!</div>
