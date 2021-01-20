@@ -29,11 +29,11 @@
         <url-pattern>/logout</url-pattern>
     </servlet-mapping>
     <servlet>
-        <servlet-name>chatServlet</servlet-name>
-        <servlet-class>chat.ChatServlet</servlet-class>
+        <servlet-name>Chat</servlet-name>
+        <servlet-class>com.company.сontrollers.Chat</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>chatServlet</servlet-name>
+        <servlet-name>Chat</servlet-name>
         <url-pattern>/chat</url-pattern>
     </servlet-mapping>
     <servlet>

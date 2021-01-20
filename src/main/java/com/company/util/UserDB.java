@@ -1,5 +1,6 @@
 package com.company.util;
 
+import com.company.models.Messages;
 import com.company.models.User;
 import com.company.util.interfaces.IDB;
 
@@ -41,6 +42,7 @@ public class UserDB extends DB implements IDB<User> {
         }
         return null;
     }
+
 
 
 }

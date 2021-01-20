@@ -1,6 +1,5 @@
 package com.company.сontrollers;
 
-import com.company.connection.Server;
 import com.company.models.Messages;
 import com.company.util.MessagesDB;
 
@@ -9,31 +8,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "StartGame")
-public class StartGame extends HttpServlet {
+@WebServlet(name = "Chat")
+public class Chat extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String message = request.getParameter("textInput");
+        HttpSession session = request.getSession();
+        String email = (String) session.getAttribute("email");
 
-        String status = request.getParameter("chess");
+        MessagesDB messagesDb = MessagesDB.getInstance();
+        messagesDb.addMessages(email, message);
 
-        String mess1;
-        if(status.equals("white")){
-            mess1 = "Server choose white, client plays with black";
-        }
-        else
-            mess1 = "Server choose black, client plays with white";
-
-        MessagesDB messagesDB = MessagesDB.getInstance();
-        ArrayList<Messages> messages = messagesDB.getMessages();
+        ArrayList<Messages> messages = messagesDb.getMessages();
         request.setAttribute("messages", messages);
-
-        request.setAttribute("mess1", mess1);
         request.getRequestDispatcher("jsp/chat.jsp").forward(request, response);
     }
 
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        MessagesDB messagesDb = MessagesDB.getInstance();
 
+        ArrayList<Messages> messages = messagesDb.getMessages();
+        request.setAttribute("messages", messages);
+        request.getRequestDispatcher("jsp/chat.jsp").forward(request, response);
     }
+
+
 }
