@@ -29,7 +29,15 @@ public class Chat extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        String d = request.getParameter("d");
+
         MessagesDB messagesDb = MessagesDB.getInstance();
+
+        if(d.equals("d")){
+            messagesDb.removeFromMessages();
+        }
+
 
         ArrayList<Messages> messages = messagesDb.getMessages();
         request.setAttribute("messages", messages);

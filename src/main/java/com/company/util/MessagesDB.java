@@ -1,8 +1,6 @@
 package com.company.util;
 
 import com.company.models.Messages;
-import com.company.models.User;
-import com.company.util.interfaces.IDB;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,6 +48,16 @@ public class MessagesDB extends DB {
             PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.setString(1, email);
             stmt.setString(2, message);
+            stmt.execute();
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
+        }
+    }
+
+    public void removeFromMessages() {
+        try {
+            String sql = "DELETE FROM messages";
+            PreparedStatement stmt = connection.prepareStatement(sql);
             stmt.execute();
         } catch (SQLException throwable) {
             throwable.printStackTrace();

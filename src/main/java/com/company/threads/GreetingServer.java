@@ -31,6 +31,11 @@ public class GreetingServer extends Thread {
                         + "\nGoodbye!");
                 server.close();
 
+                synchronized(this)
+                {
+                    notifyAll();
+                }
+
             } catch (SocketTimeoutException s) {
                 System.out.println("Socket timed out!");
                 break;
@@ -39,5 +44,14 @@ public class GreetingServer extends Thread {
                 break;
             }
         }
+    }
+
+    public synchronized Object get()
+            throws InterruptedException
+    {
+        while (serverSocket == null)
+            wait();
+
+        return serverSocket;
     }
 }

@@ -110,7 +110,6 @@
                                     </div>
                                 </div>
                             </c:forEach>
-                                <a href="${pageContext.request.contextPath}/chat">Refresh Chat Room</a>
                             </div>
 
                             <!--enter message to chat !CHAT FOOTER-->
@@ -136,6 +135,9 @@
                                         <input type="submit" id="sendBtn">
                                     </div>
                                 </form>
+
+                                <a href="${pageContext.request.contextPath}/chat?d=r">Refresh Chat Room    </a>
+                                <a href="${pageContext.request.contextPath}/chat?d=d">    Clear Chat Room</a>
                             </div>
                         </div>
                     </div>
